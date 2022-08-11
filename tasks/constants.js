@@ -21,7 +21,7 @@ const REWARD = function () {
 const Reward = function () {
     const hre = require("hardhat");
     if (hre.hardhatArguments.network == "rinkeby") {
-        return "";
+        return "0x05BFCf31DDB6906332a657195c08a438dE6DddeA";
     } else if (hre.hardhatArguments.network == "fuji") {
         return "0xE52d20090701F2261C9a435142BBCAd8332052cE";
     } else if (hre.hardhatArguments.network == "mumbai") {
