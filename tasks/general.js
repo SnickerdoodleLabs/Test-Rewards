@@ -109,7 +109,7 @@ task("grantRole", "Grant specific role on the consent contract.")
 
         // attach the first signer account to the reward contract handle
         const rewardHandle = new hre.ethers.Contract(
-            Reward,
+            Reward(),
             REWARD().abi,
             account
         );
@@ -139,7 +139,7 @@ task("revokeRole", "Revokes a specific role on the consent contract.")
 
         // attach the first signer account to the reward contract handle
         const rewardHandle = new hre.ethers.Contract(
-            Reward,
+            Reward(),
             REWARD().abi,
             account
         );
@@ -165,7 +165,7 @@ task("mintReward", "Revokes a specific role on the consent contract.")
 
         // attach the first signer account to the reward contract handle
         const rewardHandle = new hre.ethers.Contract(
-            Reward,
+            Reward(),
             REWARD().abi,
             account
         );
@@ -176,12 +176,6 @@ task("mintReward", "Revokes a specific role on the consent contract.")
             })
             .then((txrct) => {
                 logTXDetails(txrct);
-            })
-            .then(() => {
-                return rewardHandle.balanceOf(recipient);
-            })
-            .then((balance) => {
-                console.log("Balance of ", recipient, " is ", balance.toString());
             });
     });
 
