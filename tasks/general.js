@@ -68,24 +68,30 @@ task("cancelTx", "Send 0 ETH to cancel a transaction")
         const feeData = await accounts[acntnmbr].getFeeData();
         console.log(feeData);
 
-        const tx = await accounts[acntnmbr].sendTransaction({
+        await accounts[acntnmbr].sendTransaction({
             from: accounts[acntnmbr].address,
             to: accounts[acntnmbr].address,
             value: ethers.utils.parseEther("0"),
             nonce: txCount,
             maxFeePerGas: feeData.maxFeePerGas,
+        })
+        .then((txResponse) => {
+            return txResponse.wait();
+        })
+        .then((txrct) => {
+            logTXDetails(txrct);
+        })
+        .then(() => {
+            return accounts[acntnmbr].provider.getBalance(
+                accounts[acntnmbr].address,
+            );
+        })
+        .then((balance) => {
+            console.log(
+                "Balance of sender:",
+                hre.ethers.utils.formatUnits(balance.toString()),
+            );
         });
-
-        console.log(tx);
-        await tx.wait();
-
-        const balS = await accounts[acntnmbr].provider.getBalance(
-            accounts[acntnmbr].address,
-        );
-        console.log(
-            "Balance of sender:",
-            hre.ethers.utils.formatUnits(balS.toString()),
-        );
     });
 
 task("grantRole", "Grant specific role on the consent contract.")
@@ -144,5 +150,37 @@ task("revokeRole", "Revokes a specific role on the consent contract.")
             })
             .then((txrct) => {
                 logTXDetails(txrct);
+            });
+    });
+
+    task("mintReward", "Revokes a specific role on the consent contract.")
+    .addParam("recipient", "Address to mint reward to.")
+    .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
+    .setAction(async (taskArgs) => {
+        const accountnumber = taskArgs.accountnumber;
+        const accounts = hre.ethers.getSigners();
+        const account = accounts[accountnumber];
+        const recipient = taskArgs.recipient;
+
+
+        // attach the first signer account to the reward contract handle
+        const rewardHandle = new hre.ethers.Contract(
+            Reward,
+            REWARD().abi,
+            account
+        );
+
+        await rewardHandle.safeMint(recipient)
+            .then((txResponse) => {
+                return txResponse.wait();
+            })
+            .then((txrct) => {
+                logTXDetails(txrct);
+            })
+            .then(() => {
+                return rewardHandle.balanceOf(recipient);
+            })
+            .then((balance) => {
+                console.log("Balance of ", recipient, " is ", balance.toString());
             });
     });
