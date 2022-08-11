@@ -5,6 +5,9 @@
 The project creates a vanilla ERC721 contract for use as a test reward contract. Team members can add their wallets to the `MINTER_ROLE` and 
 mint rewads to their wallets for testing various functionalities of the reward stack on EVM-compatible public testnets. 
 
+You'll need to set a MNEMONIC phrase with funding and an ETH provider URL in order to use the CLI exposed by the hardhat framework. See the 
+instructions below.
+
 ## How To:
 
 ### Use a specific MNEMONIC

@@ -1,8 +1,10 @@
 require("@nomicfoundation/hardhat-toolbox");
+require('dotenv').config()
 require("./tasks/general.js");
 
 // Remote RPC URL
 const urlOverride = process.env.ETH_PROVIDER_URL;
+console.log("ETH_PROVIDER_URL:", urlOverride);
 
 // seed phrase for your HD wallet
 const mnemonic =
