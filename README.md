@@ -28,3 +28,9 @@ This example would use the first account in your configured HD Wallet associated
 ```shell
 npx hardhat mintReward --network rinkeby --recipient 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --accountnumber 0
 ```
+
+### Set Reward Base URI
+
+```shell
+npx hardhat setBaseURI --network rinkeby --uri ipfs://QmZhqLrVjRtKzbLQUitVXLYoVkjQJnUbhctYKrYocur1kb
+```
