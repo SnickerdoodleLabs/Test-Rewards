@@ -1,13 +1,4 @@
-# Sample Hardhat Project
+# Snickerdoodle Labs Simple Testnet Reward
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+The project creates a vanilla ERC721 contract for use as a test reward contract. Team members can add there wallets to the `MINTER_ROLE` and 
+mint rewads to their wallets for testing various functionalities of the reward stack on EVM-compatible public testnets. 
