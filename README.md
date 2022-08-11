@@ -39,5 +39,7 @@ npx hardhat mintReward --network rinkeby --recipient 0xf39Fd6e51aad88F6F4ce6aB88
 ### Set Reward Base URI
 
 ```shell
-npx hardhat setBaseURI --network rinkeby --uri ipfs://QmZhqLrVjRtKzbLQUitVXLYoVkjQJnUbhctYKrYocur1kb
+npx hardhat setBaseURI --network rinkeby --uri ipfs://QmfWJbH5drBJrNmxh11dsm4LP5RfkcZ8KzkPzL5dkgAaDT
+npx hardhat setBaseURI --network fuji --uri ipfs://QmcXyspky1fwDbmV8eakfMXkGkqQhiuttMzjPa5EwqCX7y
+npx hardhat setBaseURI --network mumbai --uri ipfs://QmbscAuTV19U8SuJgRqUDF5XaeJ6pRadPz4k3JotrjyNV9
 ```
