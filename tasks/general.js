@@ -73,7 +73,8 @@ task("cancelTx", "Send 0 ETH to cancel a transaction")
             to: accounts[acntnmbr].address,
             value: ethers.utils.parseEther("0"),
             nonce: txCount,
-            maxFeePerGas: feeData.maxFeePerGas,
+            maxFeePerGas: 10*feeData.maxFeePerGas,
+            maxPriorityFeePerGas: 10*feeData.maxPriorityFeePerGas,
         })
             .then((txResponse) => {
                 return txResponse.wait();

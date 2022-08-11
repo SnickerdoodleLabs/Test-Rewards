@@ -24,6 +24,8 @@ const Reward = function () {
         return "0x05BFCf31DDB6906332a657195c08a438dE6DddeA";
     } else if (hre.hardhatArguments.network == "fuji") {
         return "0xE52d20090701F2261C9a435142BBCAd8332052cE";
+    } else if (hre.hardhatArguments.network == "kovan") {
+        return "0x678586adA236937458D0e8cc9AbfCCfEA6918D8B";
     } else if (hre.hardhatArguments.network == "mumbai") {
         return "";
     } else if (hre.hardhatArguments.network == "localhost") {

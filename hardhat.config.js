@@ -45,7 +45,13 @@ module.exports = {
       // ethereum testnet
       accounts: accounts,
       chainId: 4,
-      url: urlOverride || "https://rinkeby-light.eth.linkpool.io",
+      url: urlOverride || "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+    },
+    kovan: {
+      // ethereum testnet
+      accounts: accounts,
+      chainId: 42,
+      url: urlOverride || "https://kovan.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
     },
     mumbai: {
       // polygon testnet
