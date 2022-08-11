@@ -11,7 +11,8 @@ async function main() {
   const Reward = await hre.ethers.getContractFactory("Reward");
   const reward = await Reward.deploy();
 
-  const txrct = await reward.deployed();
+  await reward.deployed();
+  const txrct = await reward.deployTransaction.wait();
 
   console.log("Reward deployed to:", reward.address);
   console.log("TX Hash:", txrct.transactionHash);

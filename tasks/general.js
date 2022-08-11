@@ -75,23 +75,23 @@ task("cancelTx", "Send 0 ETH to cancel a transaction")
             nonce: txCount,
             maxFeePerGas: feeData.maxFeePerGas,
         })
-        .then((txResponse) => {
-            return txResponse.wait();
-        })
-        .then((txrct) => {
-            logTXDetails(txrct);
-        })
-        .then(() => {
-            return accounts[acntnmbr].provider.getBalance(
-                accounts[acntnmbr].address,
-            );
-        })
-        .then((balance) => {
-            console.log(
-                "Balance of sender:",
-                hre.ethers.utils.formatUnits(balance.toString()),
-            );
-        });
+            .then((txResponse) => {
+                return txResponse.wait();
+            })
+            .then((txrct) => {
+                logTXDetails(txrct);
+            })
+            .then(() => {
+                return accounts[acntnmbr].provider.getBalance(
+                    accounts[acntnmbr].address,
+                );
+            })
+            .then((balance) => {
+                console.log(
+                    "Balance of sender:",
+                    hre.ethers.utils.formatUnits(balance.toString()),
+                );
+            });
     });
 
 task("grantRole", "Grant specific role on the consent contract.")
@@ -100,7 +100,7 @@ task("grantRole", "Grant specific role on the consent contract.")
     .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
     .setAction(async (taskArgs) => {
         const accountnumber = taskArgs.accountnumber;
-        const accounts = hre.ethers.getSigners();
+        const accounts = await hre.ethers.getSigners();
         const account = accounts[accountnumber];
         const ROLE = taskArgs.role;
 
@@ -129,7 +129,7 @@ task("revokeRole", "Revokes a specific role on the consent contract.")
     .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
     .setAction(async (taskArgs) => {
         const accountnumber = taskArgs.accountnumber;
-        const accounts = hre.ethers.getSigners();
+        const accounts = await hre.ethers.getSigners();
         const account = accounts[accountnumber];
         const ROLE = taskArgs.role;
 
@@ -153,12 +153,12 @@ task("revokeRole", "Revokes a specific role on the consent contract.")
             });
     });
 
-    task("mintReward", "Revokes a specific role on the consent contract.")
+task("mintReward", "Revokes a specific role on the consent contract.")
     .addParam("recipient", "Address to mint reward to.")
     .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
     .setAction(async (taskArgs) => {
         const accountnumber = taskArgs.accountnumber;
-        const accounts = hre.ethers.getSigners();
+        const accounts = await hre.ethers.getSigners();
         const account = accounts[accountnumber];
         const recipient = taskArgs.recipient;
 
@@ -182,5 +182,30 @@ task("revokeRole", "Revokes a specific role on the consent contract.")
             })
             .then((balance) => {
                 console.log("Balance of ", recipient, " is ", balance.toString());
+            });
+    });
+
+task("setBaseURI", "Sets the base URI variable on the reward contract.")
+    .addParam("uri", "Address to mint reward to.")
+    .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
+    .setAction(async (taskArgs) => {
+        const accountnumber = taskArgs.accountnumber;
+        const accounts = await hre.ethers.getSigners();
+        const account = accounts[accountnumber];
+        const uri = taskArgs.uri;
+
+        // attach the first signer account to the reward contract handle
+        const rewardHandle = new hre.ethers.Contract(
+            Reward(),
+            REWARD().abi,
+            account
+        );
+
+        await rewardHandle.setBaseURI(uri)
+            .then((txResponse) => {
+                return txResponse.wait();
+            })
+            .then((txrct) => {
+                logTXDetails(txrct);
             });
     });
