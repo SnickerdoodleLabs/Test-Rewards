@@ -12,12 +12,16 @@ instructions below.
 
 ### Use a specific MNEMONIC
 
+You should set the `MNEMONIC` variable in the [`.env`](/.env) file or `export` the environment variable in the terminal:
+
 ```shell
 export MNEMONIC = "test test test test test test test test test test test junk"
 npx hardhat accounts --network fuji
 ```
 
 ### Set your RPC endpoint provider
+
+You should set the `ETH_PROVIDER_URL` variable in the [`.env`](/.env) file or `export` the environment variable in the terminal:
 
 ```shell
 export ETH_PROVIDER_URL = https://rinkeby.infura.io/v3/<myinfurakey>
