@@ -234,7 +234,26 @@ task("getTokenURI", "Prints the token URI for the given token ID.")
         );
 
         await rewardHandle.tokenURI(tokenid)
-        .then((tokenURI) => {
-            console.log("Token URI:", tokenURI)
-        })
+            .then((tokenURI) => {
+                console.log("Token URI:", tokenURI)
+            })
+    });
+
+task("balanceOf", "Prints the number of rewards owned by an address.")
+    .addParam("address", "The address to check token balance on.")
+    .setAction(async (taskArgs) => {
+        const address = taskArgs.address;
+        const provider = await hre.ethers.provider;
+
+        // attach the first signer account to the reward contract handle
+        const rewardHandle = new hre.ethers.Contract(
+            Reward(),
+            REWARD().abi,
+            provider
+        );
+
+        await rewardHandle.balanceOf(address)
+            .then((balance) => {
+                console.log("The wallet has", balance.toString(), "rewards.")
+            })
     });
