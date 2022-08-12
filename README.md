@@ -39,7 +39,13 @@ npx hardhat mintReward --network rinkeby --recipient 0xf39Fd6e51aad88F6F4ce6aB88
 ### Set Reward Base URI
 
 ```shell
-npx hardhat setBaseURI --network rinkeby --uri ipfs://QmfWJbH5drBJrNmxh11dsm4LP5RfkcZ8KzkPzL5dkgAaDT
-npx hardhat setBaseURI --network fuji --uri ipfs://QmcXyspky1fwDbmV8eakfMXkGkqQhiuttMzjPa5EwqCX7y
-npx hardhat setBaseURI --network mumbai --uri ipfs://QmbscAuTV19U8SuJgRqUDF5XaeJ6pRadPz4k3JotrjyNV9
+npx hardhat setBaseURI --network rinkeby --uri ipfs://QmfWJbH5drBJrNmxh11dsm4LP5RfkcZ8KzkPzL5dkgAaDT?
+npx hardhat setBaseURI --network fuji --uri ipfs://QmcXyspky1fwDbmV8eakfMXkGkqQhiuttMzjPa5EwqCX7y?
+npx hardhat setBaseURI --network mumbai --uri ipfs://QmbscAuTV19U8SuJgRqUDF5XaeJ6pRadPz4k3JotrjyNV9?
 ```
+
+IMPORTANT NOTE: 
+You need to put a question mark, `?`, at the end of your IPFS CID in order for your metadata to be parsed correctly
+by indexing services. This is due to the internal logic of the `tokenURI` function implemented in the OpenZeppelin 
+library which automatically adds the tokenID to the end of `baseURI` which will result in an incorrect CID without
+the presence of the parameter separator. 

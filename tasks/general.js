@@ -73,8 +73,8 @@ task("cancelTx", "Send 0 ETH to cancel a transaction")
             to: accounts[acntnmbr].address,
             value: ethers.utils.parseEther("0"),
             nonce: txCount,
-            maxFeePerGas: 10*feeData.maxFeePerGas,
-            maxPriorityFeePerGas: 10*feeData.maxPriorityFeePerGas,
+            maxFeePerGas: 10 * feeData.maxFeePerGas,
+            maxPriorityFeePerGas: 10 * feeData.maxPriorityFeePerGas,
         })
             .then((txResponse) => {
                 return txResponse.wait();
@@ -203,4 +203,38 @@ task("setBaseURI", "Sets the base URI variable on the reward contract.")
             .then((txrct) => {
                 logTXDetails(txrct);
             });
+    });
+
+task("getBaseURI", "Prints the base URI of the reward contract.", async (taskArgs, hre) => {
+    const provider = await hre.ethers.provider;
+
+    const rewardHandle = new hre.ethers.Contract(
+        Reward(),
+        REWARD().abi,
+        provider
+    );
+
+    await rewardHandle.baseURI()
+        .then((baseURI) => {
+            console.log("Base URI:", baseURI)
+        })
+});
+
+task("getTokenURI", "Prints the token URI for the given token ID.")
+    .addParam("id", "The token id to query. ")
+    .setAction(async (taskArgs) => {
+        const tokenid = taskArgs.id;
+        const provider = await hre.ethers.provider;
+
+        // attach the first signer account to the reward contract handle
+        const rewardHandle = new hre.ethers.Contract(
+            Reward(),
+            REWARD().abi,
+            provider
+        );
+
+        await rewardHandle.tokenURI(tokenid)
+        .then((tokenURI) => {
+            console.log("Token URI:", tokenURI)
+        })
     });
