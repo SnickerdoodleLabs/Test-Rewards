@@ -8,6 +8,12 @@ mint rewads to their wallets for testing various functionalities of the reward s
 You'll need to set a MNEMONIC phrase with funding and an ETH provider URL in order to use the CLI exposed by the hardhat framework. See the 
 instructions below.
 
+## Deployment Addresses
+
+- Kovan: [`0x678586adA236937458D0e8cc9AbfCCfEA6918D8B`](https://kovan.etherscan.io/address/0x678586adA236937458D0e8cc9AbfCCfEA6918D8B)
+- Rinkeby: [`0x05BFCf31DDB6906332a657195c08a438dE6DddeA`](https://rinkeby.etherscan.io/address/0x05BFCf31DDB6906332a657195c08a438dE6DddeA)
+- Fuji: [`0xE52d20090701F2261C9a435142BBCAd8332052cE`](https://testnet.snowtrace.io/address/0xE52d20090701F2261C9a435142BBCAd8332052cE)
+
 ## How To:
 
 ### Use a specific MNEMONIC
