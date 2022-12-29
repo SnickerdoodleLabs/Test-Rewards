@@ -14,8 +14,6 @@ instructions below.
 
 ### Original Flavor Cookie Reward (COOKIE)
 
-- Kovan: [`0x678586adA236937458D0e8cc9AbfCCfEA6918D8B`](https://kovan.etherscan.io/address/0x678586adA236937458D0e8cc9AbfCCfEA6918D8B)
-- Rinkeby: [`0x05BFCf31DDB6906332a657195c08a438dE6DddeA`](https://rinkeby.etherscan.io/address/0x05BFCf31DDB6906332a657195c08a438dE6DddeA)
 - Fuji: [`0xE52d20090701F2261C9a435142BBCAd8332052cE`](https://testnet.snowtrace.io/address/0xE52d20090701F2261C9a435142BBCAd8332052cE)
 
 ### NFT London 2022 Reward (NFTL)
@@ -55,15 +53,15 @@ npx hardhat accounts --network rinkeby
 This example would use the first account in your configured HD Wallet associated with the MNEMONIC you set.
 
 ```shell
-npx hardhat mintReward --network rinkeby --recipient 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --accountnumber 0
+npx hardhat mintReward --network rinkeby --symbol COOKIE --recipient 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --accountnumber 0
 ```
 
 ### Set Reward Base URI
 
 ```shell
-npx hardhat setBaseURI --network rinkeby --uri ipfs://QmfWJbH5drBJrNmxh11dsm4LP5RfkcZ8KzkPzL5dkgAaDT?
-npx hardhat setBaseURI --network fuji --uri ipfs://QmcXyspky1fwDbmV8eakfMXkGkqQhiuttMzjPa5EwqCX7y?
-npx hardhat setBaseURI --network mumbai --uri ipfs://QmbscAuTV19U8SuJgRqUDF5XaeJ6pRadPz4k3JotrjyNV9?
+npx hardhat setBaseURI --network fuji --symbol COOKIE --uri ipfs://QmfWJbH5drBJrNmxh11dsm4LP5RfkcZ8KzkPzL5dkgAaDT?
+npx hardhat setBaseURI --network fuji --symbol COOKIE --uri ipfs://QmcXyspky1fwDbmV8eakfMXkGkqQhiuttMzjPa5EwqCX7y?
+npx hardhat setBaseURI --network fuji --symbol COOKIE --uri ipfs://QmbscAuTV19U8SuJgRqUDF5XaeJ6pRadPz4k3JotrjyNV9?
 ```
 
 IMPORTANT NOTE: 
