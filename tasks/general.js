@@ -1,7 +1,7 @@
 const {
     logTXDetails,
     REWARD,
-    Reward,
+    rewardSelector,
 } = require("./constants.js");
 
 task("accounts", "Prints the list of accounts for configured HD Wallet", async (taskArgs, hre) => {
@@ -96,10 +96,12 @@ task("cancelTx", "Send 0 ETH to cancel a transaction")
     });
 
 task("grantRole", "Grant specific role on the consent contract.")
+    .addParam("symbol", "The NFT symbol to query.")
     .addParam("grantee", "Address to grant role to.")
     .addParam("role", "Role to grant (DEFAULT_ADMIN_ROLE is '0')")
     .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
     .setAction(async (taskArgs) => {
+        const SYMBOL = taskArgs.symbol;
         const accountnumber = taskArgs.accountnumber;
         const accounts = await hre.ethers.getSigners();
         const account = accounts[accountnumber];
@@ -110,7 +112,7 @@ task("grantRole", "Grant specific role on the consent contract.")
 
         // attach the first signer account to the reward contract handle
         const rewardHandle = new hre.ethers.Contract(
-            Reward(),
+            rewardSelector(SYMBOL),
             REWARD().abi,
             account
         );
@@ -125,10 +127,12 @@ task("grantRole", "Grant specific role on the consent contract.")
     });
 
 task("revokeRole", "Revokes a specific role on the consent contract.")
+    .addParam("symbol", "The NFT symbol to query.")
     .addParam("revokee", "Address to revoke role from.")
     .addParam("role", "Role to grant (DEFAULT_ADMIN_ROLE is '0')")
     .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
     .setAction(async (taskArgs) => {
+        const SYMBOL = taskArgs.symbol;
         const accountnumber = taskArgs.accountnumber;
         const accounts = await hre.ethers.getSigners();
         const account = accounts[accountnumber];
@@ -140,7 +144,7 @@ task("revokeRole", "Revokes a specific role on the consent contract.")
 
         // attach the first signer account to the reward contract handle
         const rewardHandle = new hre.ethers.Contract(
-            Reward(),
+            rewardSelector(SYMBOL),
             REWARD().abi,
             account
         );
@@ -155,9 +159,11 @@ task("revokeRole", "Revokes a specific role on the consent contract.")
     });
 
 task("mintReward", "Revokes a specific role on the consent contract.")
+    .addParam("symbol", "The NFT symbol to query.")
     .addParam("recipient", "Address to mint reward to.")
     .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
     .setAction(async (taskArgs) => {
+        const SYMBOL = taskArgs.symbol;
         const accountnumber = taskArgs.accountnumber;
         const accounts = await hre.ethers.getSigners();
         const account = accounts[accountnumber];
@@ -166,7 +172,7 @@ task("mintReward", "Revokes a specific role on the consent contract.")
 
         // attach the first signer account to the reward contract handle
         const rewardHandle = new hre.ethers.Contract(
-            Reward(),
+            rewardSelector(SYMBOL),
             REWARD().abi,
             account
         );
@@ -181,9 +187,11 @@ task("mintReward", "Revokes a specific role on the consent contract.")
     });
 
 task("setBaseURI", "Sets the base URI variable on the reward contract.")
+    .addParam("symbol", "The NFT symbol to query.")
     .addParam("uri", "Address to mint reward to.")
     .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
     .setAction(async (taskArgs) => {
+        const SYMBOL = taskArgs.symbol;
         const accountnumber = taskArgs.accountnumber;
         const accounts = await hre.ethers.getSigners();
         const account = accounts[accountnumber];
@@ -191,7 +199,7 @@ task("setBaseURI", "Sets the base URI variable on the reward contract.")
 
         // attach the first signer account to the reward contract handle
         const rewardHandle = new hre.ethers.Contract(
-            Reward(),
+            rewardSelector(SYMBOL),
             REWARD().abi,
             account
         );
@@ -205,11 +213,14 @@ task("setBaseURI", "Sets the base URI variable on the reward contract.")
             });
     });
 
-task("getBaseURI", "Prints the base URI of the reward contract.", async (taskArgs, hre) => {
+task("getBaseURI", "Prints the base URI of the reward contract.")
+    .addParam("symbol", "The NFT symbol to query.")
+    .setAction(async (taskArgs) => {
+    const SYMBOL = taskArgs.symbol;         
     const provider = await hre.ethers.provider;
 
     const rewardHandle = new hre.ethers.Contract(
-        Reward(),
+        rewardSelector(SYMBOL),
         REWARD().abi,
         provider
     );
@@ -221,14 +232,16 @@ task("getBaseURI", "Prints the base URI of the reward contract.", async (taskArg
 });
 
 task("getTokenURI", "Prints the token URI for the given token ID.")
+    .addParam("symbol", "The NFT symbol to query.")
     .addParam("id", "The token id to query. ")
     .setAction(async (taskArgs) => {
+        const SYMBOL = taskArgs.symbol;  
         const tokenid = taskArgs.id;
         const provider = await hre.ethers.provider;
 
         // attach the first signer account to the reward contract handle
         const rewardHandle = new hre.ethers.Contract(
-            Reward(),
+            rewardSelector(SYMBOL),
             REWARD().abi,
             provider
         );
@@ -240,14 +253,16 @@ task("getTokenURI", "Prints the token URI for the given token ID.")
     });
 
 task("balanceOf", "Prints the number of rewards owned by an address.")
+    .addParam("symbol", "The NFT symbol to query.")
     .addParam("address", "The address to check token balance on.")
     .setAction(async (taskArgs) => {
+        const SYMBOL = taskArgs.symbol; 
         const address = taskArgs.address;
         const provider = await hre.ethers.provider;
 
         // attach the first signer account to the reward contract handle
         const rewardHandle = new hre.ethers.Contract(
-            Reward(),
+            rewardSelector(SYMBOL),
             REWARD().abi,
             provider
         );

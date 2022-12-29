@@ -12,9 +12,23 @@ instructions below.
 
 ## Deployment Addresses
 
+### Original Flavor Cookie Reward (COOKIE)
+
 - Kovan: [`0x678586adA236937458D0e8cc9AbfCCfEA6918D8B`](https://kovan.etherscan.io/address/0x678586adA236937458D0e8cc9AbfCCfEA6918D8B)
 - Rinkeby: [`0x05BFCf31DDB6906332a657195c08a438dE6DddeA`](https://rinkeby.etherscan.io/address/0x05BFCf31DDB6906332a657195c08a438dE6DddeA)
 - Fuji: [`0xE52d20090701F2261C9a435142BBCAd8332052cE`](https://testnet.snowtrace.io/address/0xE52d20090701F2261C9a435142BBCAd8332052cE)
+
+### NFT London 2022 Reward (NFTL)
+
+- Fuji [`0x140694aA94F283dc31BE4352bF09A525c7a4A4c4`](https://testnet.snowtrace.io/address/0x140694aA94F283dc31BE4352bF09A525c7a4A4c4)
+
+### Snickerdoodle OG Beta Testers (SOGs)
+
+- Fuji [`0x71e279A21F96cad4Ee870a69a81f2aC98EBc5551`](https://testnet.snowtrace.io/address/0x71e279A21F96cad4Ee870a69a81f2aC98EBc5551)
+
+### Good Vibes (GVs)
+
+- Fuji [`0x606565d105637E84dC3AB5f61cC2a6Cc42BFcDB4`](https://testnet.snowtrace.io/address/0x606565d105637E84dC3AB5f61cC2a6Cc42BFcDB4)
 
 ## How To:
 

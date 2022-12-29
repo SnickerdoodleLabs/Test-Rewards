@@ -18,7 +18,7 @@ const REWARD = function () {
 };
 
 // returns deployment address of the Consent Contract Factory
-const Reward = function () {
+const originalCookieReward = function () {
     const hre = require("hardhat");
     if (hre.hardhatArguments.network == "rinkeby") {
         return "0x05BFCf31DDB6906332a657195c08a438dE6DddeA";
@@ -35,8 +35,76 @@ const Reward = function () {
     }
 };
 
+// returns deployment address of the Consent Contract Factory
+const nftLondonReward = function () {
+    const hre = require("hardhat");
+    if (hre.hardhatArguments.network == "rinkeby") {
+        return "";
+    } else if (hre.hardhatArguments.network == "fuji") {
+        return "0x140694aA94F283dc31BE4352bF09A525c7a4A4c4";
+    } else if (hre.hardhatArguments.network == "kovan") {
+        return "";
+    } else if (hre.hardhatArguments.network == "mumbai") {
+        return "";
+    } else if (hre.hardhatArguments.network == "localhost") {
+        return "";
+    } else {
+        return "";
+    }
+};
+
+// returns deployment address of the Consent Contract Factory
+const snickerdoodleOGs = function () {
+    const hre = require("hardhat");
+    if (hre.hardhatArguments.network == "rinkeby") {
+        return "";
+    } else if (hre.hardhatArguments.network == "fuji") {
+        return "0x71e279A21F96cad4Ee870a69a81f2aC98EBc5551";
+    } else if (hre.hardhatArguments.network == "kovan") {
+        return "";
+    } else if (hre.hardhatArguments.network == "mumbai") {
+        return "";
+    } else if (hre.hardhatArguments.network == "localhost") {
+        return "";
+    } else {
+        return "";
+    }
+};
+
+// returns deployment address of the Consent Contract Factory
+const goodVibesReward = function () {
+    const hre = require("hardhat");
+    if (hre.hardhatArguments.network == "rinkeby") {
+        return "";
+    } else if (hre.hardhatArguments.network == "fuji") {
+        return "0x606565d105637E84dC3AB5f61cC2a6Cc42BFcDB4";
+    } else if (hre.hardhatArguments.network == "kovan") {
+        return "";
+    } else if (hre.hardhatArguments.network == "mumbai") {
+        return "";
+    } else if (hre.hardhatArguments.network == "localhost") {
+        return "";
+    } else {
+        return "";
+    }
+};
+
+const rewardSelector = function (reward) {
+    if (reward == "COOKIE") {
+        return originalCookieReward();
+    } else if (reward == "NFTL") {
+        return nftLondonReward();
+    } else if (reward == "SOGs") {
+        return snickerdoodleOGs();
+    } else if (reward == "GVs") {
+        return goodVibesReward();
+    } else {
+        return "";
+    }
+};
+
 module.exports = {
     REWARD,
-    Reward,
+    rewardSelector,
     logTXDetails
 };
