@@ -38,11 +38,11 @@ instructions below.
 
 ### Ugly Sweater (UGLY)
 
-- Fuji [``](https://testnet.snowtrace.io/address/)
+- Fuji [`0x7E455acB8b94beEAf8FeDBf26d0D3C7E692d5f33`](https://testnet.snowtrace.io/address/0x7E455acB8b94beEAf8FeDBf26d0D3C7E692d5f33)
 
 ### Snickerdoodle Beanie (BEANIE)
 
-- Fuji [``](https://testnet.snowtrace.io/address/0x322b7C18e3a4655BA86CeABd78dB525949308516)
+- Fuji [`0x322b7C18e3a4655BA86CeABd78dB525949308516`](https://testnet.snowtrace.io/address/0x322b7C18e3a4655BA86CeABd78dB525949308516)
 
 ## How To:
 
