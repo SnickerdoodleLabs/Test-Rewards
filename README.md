@@ -28,6 +28,22 @@ instructions below.
 
 - Fuji [`0x606565d105637E84dC3AB5f61cC2a6Cc42BFcDB4`](https://testnet.snowtrace.io/address/0x606565d105637E84dC3AB5f61cC2a6Cc42BFcDB4)
 
+### The Infinite Cookie (TIC)
+
+- Fuji [`0xdDf6f1Cd665eA1a77dA40d85d3Bb98124D5C4Bb4`](https://testnet.snowtrace.io/address/0xdDf6f1Cd665eA1a77dA40d85d3Bb98124D5C4Bb4)
+
+### Cookie Skullz (SKULLZ)
+
+- Fuji [`0x887254ed647b2F2997DDa8a9b2c620a10B6Cb6Bc`](https://testnet.snowtrace.io/address/0x887254ed647b2F2997DDa8a9b2c620a10B6Cb6Bc)
+
+### Ugly Sweater (UGLY)
+
+- Fuji [``](https://testnet.snowtrace.io/address/)
+
+### Snickerdoodle Beanie (BEANIE)
+
+- Fuji [``](https://testnet.snowtrace.io/address/0x322b7C18e3a4655BA86CeABd78dB525949308516)
+
 ## How To:
 
 ### Use a specific MNEMONIC

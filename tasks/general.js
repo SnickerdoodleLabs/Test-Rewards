@@ -188,7 +188,7 @@ task("mintReward", "Revokes a specific role on the consent contract.")
 
 task("setBaseURI", "Sets the base URI variable on the reward contract.")
     .addParam("symbol", "The NFT symbol to query.")
-    .addParam("uri", "Address to mint reward to.")
+    .addParam("uri", "baseURI string that will be written to the NFT contract.")
     .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
     .setAction(async (taskArgs) => {
         const SYMBOL = taskArgs.symbol;
