@@ -44,6 +44,10 @@ instructions below.
 
 - Fuji [`0x322b7C18e3a4655BA86CeABd78dB525949308516`](https://testnet.snowtrace.io/address/0x322b7C18e3a4655BA86CeABd78dB525949308516)
 
+### Loteria La Galleta (LOTERIA)
+
+- Fuji [`0x42d72ef9837dF69cBC489996B59ef9b7FB75556F`](https://testnet.snowtrace.io/address/0x42d72ef9837dF69cBC489996B59ef9b7FB75556F)
+
 ## How To:
 
 ### Use a specific MNEMONIC

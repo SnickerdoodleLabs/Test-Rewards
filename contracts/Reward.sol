@@ -13,7 +13,7 @@ contract Reward is ERC721, ERC721Burnable, AccessControl {
     Counters.Counter private _tokenIdCounter;
     string public baseURI;
 
-    constructor() ERC721("Snickerdoodle Beanie", "BEANIE") {
+    constructor() ERC721("Loteria", "LOTERIA") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
     }

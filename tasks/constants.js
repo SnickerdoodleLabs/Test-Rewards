@@ -153,6 +153,23 @@ const snickerdoodleBeanie = function () {
     }
 };
 
+const loteriaNFT = function () {
+    const hre = require("hardhat");
+    if (hre.hardhatArguments.network == "rinkeby") {
+        return "";
+    } else if (hre.hardhatArguments.network == "fuji") {
+        return "0x42d72ef9837dF69cBC489996B59ef9b7FB75556F";
+    } else if (hre.hardhatArguments.network == "kovan") {
+        return "";
+    } else if (hre.hardhatArguments.network == "mumbai") {
+        return "";
+    } else if (hre.hardhatArguments.network == "localhost") {
+        return "";
+    } else {
+        return "";
+    }
+};
+
 const rewardSelector = function (reward) {
     if (reward == "COOKIE") {
         return originalCookieReward();
@@ -170,6 +187,8 @@ const rewardSelector = function (reward) {
         return uglySweater();
     } else if (reward == "BEANIE") {
         return snickerdoodleBeanie();
+    } else if (reward == "LOTERIA") {
+        return loteriaNFT();
     } else {
         return "";
     }
