@@ -95,10 +95,39 @@ task("cancelTx", "Send 0 ETH to cancel a transaction")
             });
     });
 
-task("grantRole", "Grant specific role on the consent contract.")
+task("grantAdminRole", "Grant admin role on the reward contract.")
     .addParam("symbol", "The NFT symbol to query.")
     .addParam("grantee", "Address to grant role to.")
-    .addParam("role", "Role to grant (DEFAULT_ADMIN_ROLE is '0')")
+    .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
+    .setAction(async (taskArgs) => {
+        const SYMBOL = taskArgs.symbol;
+        const accountnumber = taskArgs.accountnumber;
+        const accounts = await hre.ethers.getSigners();
+        const account = accounts[accountnumber];
+        const grantee = taskArgs.grantee;
+
+        // attach the first signer account to the reward contract handle
+        const rewardHandle = new hre.ethers.Contract(
+            rewardSelector(SYMBOL),
+            REWARD().abi,
+            account
+        );
+
+        const roleBytes = await rewardHandle.DEFAULT_ADMIN_ROLE();
+
+        await rewardHandle.grantRole(roleBytes, grantee)
+            .then((txResponse) => {
+                return txResponse.wait();
+            })
+            .then((txrct) => {
+                logTXDetails(txrct);
+            });
+    });
+
+task("grantRole", "Grant specific role on the reward contract.")
+    .addParam("symbol", "The NFT symbol to query.")
+    .addParam("grantee", "Address to grant role to.")
+    .addParam("role", "Role to grant (DEFAULT_ADMIN_ROLE should use grantAdminRole)")
     .addParam("accountnumber", "integer referencing the account to you in the configured HD Wallet")
     .setAction(async (taskArgs) => {
         const SYMBOL = taskArgs.symbol;
@@ -216,26 +245,26 @@ task("setBaseURI", "Sets the base URI variable on the reward contract.")
 task("getBaseURI", "Prints the base URI of the reward contract.")
     .addParam("symbol", "The NFT symbol to query.")
     .setAction(async (taskArgs) => {
-    const SYMBOL = taskArgs.symbol;         
-    const provider = await hre.ethers.provider;
+        const SYMBOL = taskArgs.symbol;
+        const provider = await hre.ethers.provider;
 
-    const rewardHandle = new hre.ethers.Contract(
-        rewardSelector(SYMBOL),
-        REWARD().abi,
-        provider
-    );
+        const rewardHandle = new hre.ethers.Contract(
+            rewardSelector(SYMBOL),
+            REWARD().abi,
+            provider
+        );
 
-    await rewardHandle.baseURI()
-        .then((baseURI) => {
-            console.log("Base URI:", baseURI)
-        })
-});
+        await rewardHandle.baseURI()
+            .then((baseURI) => {
+                console.log("Base URI:", baseURI)
+            })
+    });
 
 task("getTokenURI", "Prints the token URI for the given token ID.")
     .addParam("symbol", "The NFT symbol to query.")
     .addParam("id", "The token id to query. ")
     .setAction(async (taskArgs) => {
-        const SYMBOL = taskArgs.symbol;  
+        const SYMBOL = taskArgs.symbol;
         const tokenid = taskArgs.id;
         const provider = await hre.ethers.provider;
 
@@ -256,7 +285,7 @@ task("balanceOf", "Prints the number of rewards owned by an address.")
     .addParam("symbol", "The NFT symbol to query.")
     .addParam("address", "The address to check token balance on.")
     .setAction(async (taskArgs) => {
-        const SYMBOL = taskArgs.symbol; 
+        const SYMBOL = taskArgs.symbol;
         const address = taskArgs.address;
         const provider = await hre.ethers.provider;
 
